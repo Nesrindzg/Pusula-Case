@@ -33,11 +33,11 @@ INSERT INTO Sales (SaleID, ProductID, Quantity, SaleDate) VALUES
 (5, 2, 7, '2024-03-25'),
 (6, 3, 2, '2024-04-12');
 
--- Yýllara göre satýlan ürün adedi ve toplam fiyatý
+-- Yillara gÃ¶re satÄ±lan Ã¼rÃ¼n adedi ve toplam fiyatÄ±
 SELECT ProductName, Sum(Quantity) as 'Quantity of Product', Sum(Quantity*Price) as 'Total Price', Year(Sales.SaleDate) as 'Year'
 	FROM Products, Sales WHERE Products.ProductID = Sales.ProductID GROUP BY ProductName , Year(Sales.SaleDate)
 
--- En çok satýlan ürün adý ve toplam fiyatý
+-- En Ã§ok satÄ±lan Ã¼rÃ¼n adÄ± ve toplam fiyatÄ±
 SELECT TOP 1 ProductName, Sum(Quantity*Price) as 'Total Price' FROM Products, Sales 
 	WHERE Products.ProductID = Sales.ProductID GROUP BY ProductName ORDER BY 'Total Price' DESC 
 	
